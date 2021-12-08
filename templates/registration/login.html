@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+      <div class="d-flex flex-column text-center">
+        <h2>Log In</h2>
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-group mt-3">
+            <div>{{ form.username.label_tag }} {{ form.username }}</div>
+            <div>{{ form.password.label_tag }} {{ form.password }} </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
+        {% if form.errors %}  
+          <p>Username tidak tersedia atau password salah.<br>
+          Silahkan mendaftar jika belum memiliki akun
+        {% else %}
+            <p>Belum punya akun ? Daftar disini
+        {% endif %} 
+        <span><a href="{% url 'register:register' %}">signup</a></span> </p>
+      </div>
+
+    
+    
+      
+      
+      
+{% endblock %}

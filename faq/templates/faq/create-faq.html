@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1 class="text-center">Form Mengajukan Pertanyaan</h1>
+<div class="container">
+    <div class="justify-content-center align-items-center mt-5">
+        <!-- -->
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button action="{% url 'faq:create_faq' %}" id="create-btn" class="btn text-light btn-primary p-1" type="submit">Submit</button>
+        </form>
+        <button id="btn-cancel" class="btn text-light btn-danger p-1 mt-3" type="submit">Batal</button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("#create-btn").click(function(event) {
+            var question = $('#id_pertanyaan').val()
+            if(question) {
+
+            } else {
+                event.preventDefault()
+                alert("Silakan isi pertanyaan dahulu")
+            }
+        })
+        $("#btn-cancel").click(function() {
+            $.ajax({
+                url: "{% url 'faq:home' %}",
+                type: "GET",
+                success: function(response){
+                    window.location.href = "/faq/";
+                }
+            })
+        })
+    })
+</script>
+{% endblock content %}

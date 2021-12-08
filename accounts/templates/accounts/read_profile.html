@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<script src="{% static 'accounts/js/read.js' %}"></script>
+
+<div class="d-flex flex-column align-items-center">
+    <div class="d-flex justify-content-center flex-column align-items-center w-75">
+         <div class="d-flex flex-column p-3 text-center w-100 border border-primary mt-2">
+            <div class="pb-2">
+                {{ userProfile.username }}
+            </div>
+            <div class="w-25 mx-auto">
+                {% if userProfile.profile.role == "Admin"  %}
+            <div class="btn btn-success">
+                {{userProfile.profile.role}}
+            </div>  
+            {% elif userProfile.profile.role == "Moderator"  %}
+            <div class="btn btn-info">
+                {{userProfile.profile.role}}
+            </div>  
+            {% elif userProfile.profile.role == "User"  %}
+            <div class="btn btn-secondary">
+                {{userProfile.profile.role}}
+            </div>  
+            {% endif %}    
+            </div>
+            
+         </div>
+         <div class="d-flex flex-column w-75  p-3 text-center border border-primary mb-2">
+            <div>
+                {{ userProfile.profile.description }}
+            </div> 
+         </div>
+    </div>
+        <div class="d-flex flex-column w-75  border border-success align-items-left mt-3">
+            <div class="text-left p-3"> Name</div>
+            <div class="text-left p-3">{{userProfile.profile.name}}</div>
+        </div>
+        <div class="d-flex flex-column w-75  border border-success align-items-left mt-3">
+            <div class="text-left p-3"> Birth Date</div>
+            <div class="text-left p-3">{{userProfile.profile.birth_date}}</div>
+        </div>
+        <div class="d-flex flex-column w-75 border border-success align-items-left mt-3">
+            <div class="text-left p-3"> Gender</div>
+            <div class="text-left p-3">{{userProfile.profile.gender}}</div>
+        </div>
+        <div class="d-flex flex-column w-75 border border-success align-items-left mt-3">
+            <div class="text-left p-3"> Phone Number</div>
+            <div class="text-left p-3">{{userProfile.profile.phone_number}}</div>
+        </div>
+        <div class="d-flex flex-column w-75 border border-success align-items-left mt-3">
+            <div class="text-left p-3"> Occupation</div>
+            <div class="text-left p-3">{{userProfile.profile.occupation}}</div>
+        </div>
+        <div class="d-flex flex-column w-75 border border-success align-items-left mt-3">
+            <div class="text-left p-3"> Address</div>
+            <div class="text-left p-3">{{userProfile.profile.address}}</div>
+        </div>
+    {% if userProfile.username == user.username  %}
+    <div class="d-flex justify-content-end my-2 w-75">
+        <a href="{% url 'accounts:updateProfile' %}" class="btn btn-info mr-2">Update</a>
+        <div id="delete" class="btn btn-danger mr-2">Delete</div>
+    </div>
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

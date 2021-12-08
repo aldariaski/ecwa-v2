@@ -40,4 +40,5 @@ Deployment:
     url: $HEROKU_APPHOST
   only:
     - master
+    - develop
     

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1 class="text-center">Form Mengubah Pertanyaan</h1>
+<div class="container">
+    <form method="POST" action="/faq/update2/">
+        {% csrf_token %}
+        <label for="id_user">ID Pertanyaan:</label><a>{{ id_question }}</a>
+        <br>
+        <label for="id_pesan">Pertanyaan baru:</label>
+        <input name="id_question" class="card-title" value="{{ id_question }}" hidden>
+        <textarea id="text-question" name="question" cols="40" rows="10" placeholder="Pertanyaan Anda" class="align-items-center justify-content-center form-control" required></textarea>
+        <div class="justify-content-center align-items-center mt-5">
+            <button class="btn text-light btn-primary p-1" type="submit">Ubah</button>
+        </div>
+    </form>
+    <button id="btn-batal" class="btn text-light btn-danger p-1 mt-3" type="submit">Batal</button>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("#btn-batal").click(function(event) {
+            $("#text-question").prop('required',false);
+            $.ajax({
+                url: "{% url 'faq:home' %}",
+                type: "GET",
+                success: function(response){
+                    window.location.href = "/faq/";
+                }
+            })
+        })
+    })
+</script>
+{% endblock content %}
