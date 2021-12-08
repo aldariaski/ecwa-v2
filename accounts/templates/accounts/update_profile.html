@@ -10,11 +10,11 @@
         <form class="fr-form column w-75">
                 <div class="form-group">
                     <div class="p-form d-flex justify-content-start">
-                        <label for="username">Username : </label>
+                        <label for="username" >Username : </label>
                     </div>
                     <input type="text" id="username" class="form-control" value="{{user.username}}" readonly></input> <br>
                     <div class="p-jawab d-flex justify-content-start">
-                        <label for="name">Name : </label>
+                        <label for="name">Name<small class="text-danger">*</small> : </label>
                     </div>
                     <input type="text" class="form-control" id="name" value="{{user.profile.name}}"></input> <br>
                     <div class="p-jawab d-flex justify-content-start">
@@ -33,19 +33,19 @@
                         </select>
                     </div>
                     <div class="p-jawab d-flex justify-content-start">
-                        <label for="phone_number">Phone Number : </label>
+                        <label for="phone_number">Phone Number<small class="text-danger">*</small> : </label>
                     </div>
                     <input type="number" class="form-control" id="phone_number" value="{{user.profile.phone_number}}" maxlength="12"></input> <br>
                     <div class="p-jawab d-flex justify-content-start">
-                        <label for="address">Address : </label>
+                        <label for="address">Address<small class="text-danger">*</small> : </label>
                     </div>
                     <textarea type="text" class="form-control" id="address" rows="3">{{user.profile.address}}</textarea> <br>
                     <div class="p-jawab d-flex justify-content-start">
-                        <label for="occupation">Occupation : </label>
+                        <label for="occupation">Occupation<small class="text-danger">*</small> : </label>
                     </div>
                     <input type="text" class="form-control" id="occupation" value="{{user.profile.occupation}}" maxlength="12"></input> <br>
                     <div class="p-jawab d-flex justify-content-start">
-                        <label for="description">Description : </label>
+                        <label for="description">Description<small class="text-danger">*</small> : </label>
                     </div>
                     <textarea type="text" class="form-control" id="description" rows="3">{{user.profile.description}}</textarea> <br>
                     

@@ -16,7 +16,7 @@
       </div>
       {% for item in postlist %}
       <div class="border shadow mt-3 p-1 rounded bg-light">
-        <a href="{% url 'accounts:readProfile' item.0.user.username %}" class="text-dark mb-1"><strong>{{item.0.user.username}}</strong></a>
+        <a href="{% url 'accounts:readProfile' item.0.user.username %}" class="text-dark mb-1"><strong>by {{item.0.user.profile.name}}</strong></a>
         <div class="d-flex flex-row justify-content-between">
           <a class="text-dark mb-1 h5" href="{% url 'comment:detail_post' item.0.id %}"><strong>{{item.0.title}}</strong></a>
           <p class="text-dark mb-1 h5"><strong>{{item.0.id}}</strong></p>
