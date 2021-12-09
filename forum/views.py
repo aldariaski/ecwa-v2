@@ -20,7 +20,7 @@ def allthread(request):
     }
     return render(request, 'forum/allthread.html', context)
 
-@login_required(login_url="/account/login")
+@login_required(login_url="/accounts/login")
 def newthread(request):
     if not request.user.is_authenticated:
         return "kontol"
@@ -37,7 +37,7 @@ def newthread(request):
     }
     return render(request, 'forum/newthread.html', context)
 
-@login_required(login_url="/account/login")
+@login_required(login_url="/accounts/login")
 def like_post(request, id):
     if not request.user.is_authenticated:
         return "kontol"
@@ -50,14 +50,14 @@ def like_post(request, id):
         return redirect(reverse("comment:detail_post", args=[like.post.id]))
     return redirect(reverse("comment:detail_post", args=[id]))
 
-@login_required(login_url="/account/login")
+@login_required(login_url="/accounts/login")
 def delete_post(request, id):
     postan = Post.objects.get(id=id)
     if request.user.is_superuser or request.user == postan.user:
         postan.delete()
     return redirect("forum:allthread")
 
-@login_required(login_url="/account/login")
+@login_required(login_url="/accounts/login")
 def update_post(request):
     if request.method == 'POST':
         postan = Post.objects.get(id = request.POST["idz"])
