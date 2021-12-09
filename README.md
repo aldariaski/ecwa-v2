@@ -15,12 +15,12 @@
 
 
 
-[actions-badge]: https://github.com/tk-rpl-a6/ecwa/workflows/Test%20and%20Deploy/badge.svg
-[commits-gh]: https://github.com/tk-rpl-a6/ecwa/commits/master
-[pipeline-badge]: https://gitlab.com/tk-rpl-a6/ecwa/badges/master/pipeline.svg
-[coverage-badge]: https://gitlab.com/tk-rpl-a6/ecwa/badges/master/coverage.svg
-[commits-gl]: https://gitlab.com/tk-rpl-a6/ecwa/-/commits/master
-[repo-gl]: https://gitlab.com/tk-rpl-a6/ecwa
+[actions-badge]: https://github.com/tk-rpl-a6/ecwa-v2/workflows/Test%20and%20Deploy/badge.svg
+[commits-gh]: https://github.com/tk-rpl-a6/ecwa-v2/commits/master
+[pipeline-badge]: https://gitlab.com/tk-rpl-a6/ecwa-v2/badges/master/pipeline.svg
+[coverage-badge]: https://gitlab.com/tk-rpl-a6/ecwa-v2/badges/master/coverage.svg
+[commits-gl]: https://gitlab.com/tk-rpl-a6/ecwa-v2/-/commits/master
+[repo-gl]: https://gitlab.com/tk-rpl-a6/ecwa-v2
 [website]: https://ecwa-a6.herokuapp.com/
-[develop]: https://gitlab.com/tk-rpl-a6/ecwa/-/tree/develop
+[develop]: https://gitlab.com/tk-rpl-a6/ecwa-v2/-/tree/develop
 [UAT]: https://docs.google.com/spreadsheets/u/1/d/1NVHwR8PdAegGM-Ns9ANP9eClu1V_TjXN/edit#gid=229880640

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1 class='text-center mt-5'>Welcome to FAQ!</h1>
+<section class="d-flex justify-content-center align-items-center text-dark flex-column">
+    {% for question in question_list %}
+    <div class="card mt-3 mx-auto border-3 border-dark container-fluid w-75">
+        <div class="card-body">
+        <h5 class="card-title">{{ question.pesan }}</h5>
+        <div class="row float-right">
+            {% if user.profile.role == "Admin" or user.profile.role == "Moderator" %}
+                <form action="{% url 'faq:update_faq' %}" method="POST">
+                    {% csrf_token %}
+                    <input name="id_question" class="card-title" value="{{ question.id }}" hidden>
+                    <button class="btn btn-primary column ml-3">Ubah</button>
+                </form>
+                <button id="{{ forloop.counter }}" class="btn btn-danger column btn-del ml-3" value="{{ question.id }}">Hapus</button>
+            {% elif user.profile.role == "User"  %}
+            {% endif %}
+        </div>
+        </div>
+    </div>
+    {% endfor %}
+    <br>
+    {% if user.profile.role == "Admin" or user.profile.role == "Moderator" %}
+        <form action="{% url 'faq:create_faq' %}">
+            <button class="btn btn-primary" type="submit">Ajukan Pertanyaan</button>
+        </form>
+    {% elif user.profile.role == "User"  %}
+    {% endif %}
+</section>
+
+<script>
+    $(document).ready(function() {
+        $(".btn-del").click(function() {
+            var id = $(this).val()
+            console.log(id)
+            if (confirm("Yakin ingin menghapus pertanyaan?")) {
+                $.ajax({
+                    url: "{% url 'faq:delete_faq' %}",
+                    type: "GET",
+                    data: {
+                        'id' : id,
+                    },
+                    success: function(response){
+                        window.location.href = "/faq/";
+                    }
+                })
+            }
+        })
+    })
+</script>
+{% endblock content %}

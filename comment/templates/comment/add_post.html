@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Quarantine Stories</title>
+{% endblock meta %}
+
+{% block content %}
+<p class="h3 text-light">New Post</p>
+<div class="mb-3 p-1 bg-light shadow rounded border" style="min-height:3rem;">
+<form action="{% url 'comment:add_post' %}" method="POST" class="d-flex justify-content-center align-items-center flex-column mt-2">
+    {% csrf_token %}
+    {{post_form}}
+    <input class="btn btn-success mt-2" type="submit" value="Submit Post">
+</form>
+</div>
+{% endblock content %}
