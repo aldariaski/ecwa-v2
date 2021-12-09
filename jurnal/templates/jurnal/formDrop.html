@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="p-5 d-flex flex-column justify-content-center align-items-center">
+    <h3 class="mb-3 text-center">Are you sure?</h3>
+
+    <form method="POST" action="{% url 'jurnal:drop_record' %}" class="d-flex flex-column align-items-center">
+        {% csrf_token %}
+        <div class="d-flex w-100 justify-content-around mb-5">
+            <button type="submit" class="btn btn-primary">Drop</button>
+            <a href="{% url 'jurnal:jurnal_front' %}">
+              <div class="btn btn-danger">Cancel</div>
+            </a>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

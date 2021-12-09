@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Quarantine Stories</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="d-flex flex-column mx-5 mt-3">
+      <div class="d-flex flex-row">
+        <p class="my-auto ml-2 h5 text-dark"><strong><u>Posts</u></strong></p>
+      </div>
+      {% for item in postlist %}
+      <div class="border shadow mt-3 p-1 rounded bg-light">
+        <a class="text-dark mb-1" href="{% url 'accounts:readProfile' item.0.user.username %}"><strong>{{item.0.user.profile.name}}</strong></a>
+        <a class="text-dark mb-1 h5" href="{% url 'comment:detail_post' item.0.id %}"><strong>{{item.0.title}}</strong></a>
+        <div class="border-top d-flex justify-content-end"><p class="text-dark mb-1 mt-1">{{item.1}} <img src="https://www.jing.fm/clipimg/full/5-51130_thumbs-clipart-achieved-thumbs-up-icon-copyright-free.png" alt="Tyme" style="max-width:1rem;position: relative;top: -2px;"></p></div>
+      </div>
+      {% endfor %}
+    </div>
+{% endblock content %}

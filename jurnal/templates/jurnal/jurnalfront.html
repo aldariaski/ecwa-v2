@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="jumbotron rounded-0 bg-4 bg-light">
+    <h1 class="display-4 text-dark">Economy Journal</h1>
+    <div class="d-flex flex-row justify-content-between">
+      <p class="lead text-dark">View {{uzername}}'s Journal</p>
+      <div class="d-flex flex-row">
+        <a role="button" href="{% url 'jurnal:add_record' %}" class="btn btn-primary mr-2">Add Record</a>
+        <a role="button" href="{% url 'jurnal:update_record' %}" class="btn btn-primary mr-2">Update Record</a>
+        <a role="button" href="{% url 'jurnal:drop_record' %}" class="btn btn-primary">Drop Record</a>
+      </div>
+    </div>
+    <hr class="my-4">
+    
+    <section>
+      <br>
+      <div class="Daftar-Item-Table w-75 border-dark m-3">
+        <table class="table table-hover table-bordered" id="daftar-item-table">
+                <thead>
+                  <tr class="table-light" id="table-header">
+                    <th>ID</th>
+                    <th>Sum</th>
+                    <th>Type</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody class="item-table">
+                  {% for recordo in recordiams %}
+                  <tr class="table-light">
+                    <td>{{ recordo.recordid }}</td>
+                    <td>{{ recordo.values }}</td>
+                    <td>{{ recordo.typezz }}</td>
+                    <td>
+                      <form action="{% url 'jurnal:delete_record' recordo.recordid %}" method="POST" class="mr-auto">
+                        {% csrf_token %}
+                        <button class="btn btn-danger mr-auto" type="input>">
+                            Delete
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+
+        </table>
+        <table class="table table-hover bg-primary mb-3 mx-auto" id="daftar-item-table">
+          
+          
+          <thead>
+            <tr class="table-light bg-primary mb-3 mx-center" id="table-header">
+              <th>Detail : </th>
+              <th>{{ sumazi }}</th>
+            </tr>
+          </thead>
+
+        </table>
+      </div> 
+    </section>
+  </hr>
+</div>
+
+
+  
+{% endblock %}
+
